@@ -5,14 +5,14 @@ struct line{
     struct line *next;
 }; 
 struct line *create(int *arr,int n){
-    struct line *NEW,*p1,*p2;
-    p1=p2=(struct line*)malloc(sizeof(struct line));
+    struct line *head,*p1,*p2;
+    p1=(struct line*)malloc(sizeof(struct line));
     p1->next=NULL;
-    p2->next=NULL;
+    //p2->next=NULL;
     for(int i=0;i<n;i++){
         if(i==0){
             p1->a=arr[i];
-            NEW=p1;
+            head=p1;
             p2=p1;
         }
         else{
@@ -23,10 +23,10 @@ struct line *create(int *arr,int n){
         }
     }
     p2->next=NULL;
-    return NEW;
+    return head;
 }
 int main(){
-    struct line *p1,*p2;
+    struct line *p1;
     int arr[100],n,k,s=0;
     scanf("%d",&k);
     while(k!=-1){
@@ -37,7 +37,7 @@ int main(){
         scanf("%d",&k);
     }
     n=s;
-    p1=p2=create(arr,n);
+    p1=create(arr,n);
     for(int i=0;i<n;i++){
         if(i==n-1){
             printf("%d",p1->a);
